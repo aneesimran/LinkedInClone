@@ -1,10 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import { Avatar } from "@material-ui/core";
 
-function HeaderOption({ Icon, title }) {
-  return <HeaderOptionContainer></HeaderOptionContainer>;
+function HeaderOption({ avatar, Icon, title }) {
+  return (
+    <HeaderOptionContainer>
+      {Icon && <Icon fontSize="small" />}
+      {avatar && <HeaderAvatar src={avatar} />}
+      <h3>{title}</h3>
+    </HeaderOptionContainer>
+  );
 }
 
 export default HeaderOption;
 
-const HeaderOptionContainer = styled.div``;
+const HeaderOptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  color: gray;
+  cursor: pointer;
+
+  :hover {
+    color: black;
+  }
+
+  > h3 {
+    color: black;
+    font-weight: 400;
+    font-size: 12px;
+  }
+`;
+
+const HeaderAvatar = styled(Avatar)`
+  object-fit: contain;
+  height: 25px !important;
+  width: 25px !important;
+`;
