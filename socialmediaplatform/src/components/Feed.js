@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
+import ImageIcon from "@material-ui/icons/Image";
+import InputOption from "./InputOption";
+import SubscriptionIcon from "@material-ui/icons/Subscriptions";
+import EventNoteIcon from "@material-ui/icons/EventNote";
+import CalenderViewDayIcon from "@material-ui/icons/CalendarViewDay";
 
 function Feed() {
   return (
@@ -12,10 +17,17 @@ function Feed() {
             <input type="text" />
             <button type="submit">Send</button>
           </form>
-          <InputOptions>
-            <InputOptions />
-          </InputOptions>
         </InputFeed>
+        <InputOptions>
+          <InputOption Icon={ImageIcon} title="Photo" color="#70B5F9" />
+          <InputOption Icon={SubscriptionIcon} title="Video" color="#E7A33E" />
+          <InputOption Icon={EventNoteIcon} title="Event" color="#C0CBCD" />
+          <InputOption
+            Icon={CalenderViewDayIcon}
+            title="Write Article"
+            color="#7FC15E"
+          />
+        </InputOptions>
       </InputContainer>
     </FeedContainer>
   );
@@ -23,7 +35,10 @@ function Feed() {
 
 export default Feed;
 
-const InputOptions = styled.div``;
+const InputOptions = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 const FeedContainer = styled.div`
   flex: 0.6;
