@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
+import styled from "styled-components";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
@@ -8,14 +10,19 @@ function App() {
       {/* Header */}
       <Header />
       {/* App Body */}
+      <AppBody>
+        <Sidebar />
 
-      {/* Sidebar */}
+        {/* Feed */}
 
-      {/* Feed */}
-
-      {/* Widgets */}
+        {/* Widgets */}
+      </AppBody>
     </div>
   );
 }
 
 export default App;
+
+const AppBody = styled.div`
+  display: flex;
+`;
