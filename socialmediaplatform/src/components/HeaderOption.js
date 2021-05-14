@@ -5,7 +5,7 @@ import { Avatar } from "@material-ui/core";
 function HeaderOption({ avatar, Icon, title }) {
   return (
     <HeaderOptionContainer>
-      {Icon && <Icon fontSize="small" />}
+      {Icon && <Icon />}
       {avatar && <HeaderAvatar src={avatar} />}
       <h3>{title}</h3>
     </HeaderOptionContainer>
@@ -30,6 +30,8 @@ const HeaderOptionContainer = styled.div`
     color: black;
     font-weight: 400;
     font-size: 12px;
+    padding-top: 5px;
+    margin-bottom: -5px;
   }
 `;
 
@@ -37,4 +39,5 @@ const HeaderAvatar = styled(Avatar)`
   object-fit: contain;
   height: 25px !important;
   width: 25px !important;
+  margin-bottom: -2px;
 `;

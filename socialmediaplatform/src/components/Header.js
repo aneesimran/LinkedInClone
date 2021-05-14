@@ -7,12 +7,13 @@ import HomeIcon from "@material-ui/icons/Home";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import Logo from "../img/connection.png";
 
 function Header() {
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <img src="https://www.flaticon.com/svg/vstatic/svg/4506/4506376.svg?token=exp=1620663448~hmac=fd1917e681e99384f1b05259225453c7" />
+        <img src={Logo} />
         <HeaderSearch>
           <SearchIcon />
           <input type="text" />
