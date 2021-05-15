@@ -58,6 +58,9 @@ const PostInfo = styled.div`
 
 const PostBody = styled.div`
   overflow-wrap: anywhere;
+  > p {
+    padding-top: 15px;
+  }
 `;
 
 const PostButtons = styled.div`
