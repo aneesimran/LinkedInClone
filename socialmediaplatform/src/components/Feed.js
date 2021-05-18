@@ -9,11 +9,15 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalenderViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import { db } from "../firebase";
 import firebase from "firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import FlipMove from "react-flip-move";
 
 function Feed() {
   //whenever we want to change posts, we use setposts to do so, this is a react hook (use state)
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState("");
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     db.collection("posts")
@@ -32,10 +36,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Test User",
-      description: "this is a test",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl: user.photoUrl || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput("");
@@ -69,15 +73,17 @@ function Feed() {
         </InputOptions>
       </InputContainer>
       {/* everytime i have a post it will be rendered out */}
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-        <Post
-          key={id}
-          name={name}
-          description={description}
-          message={message}
-          photoUrl={photoUrl}
-        />
-      ))}
+      <FlipMove enterAnimation="fade" duration="600" delay="300">
+        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+          <Post
+            key={id}
+            name={name}
+            description={description}
+            message={message}
+            photoUrl={photoUrl}
+          />
+        ))}
+      </FlipMove>
     </FeedContainer>
   );
 }

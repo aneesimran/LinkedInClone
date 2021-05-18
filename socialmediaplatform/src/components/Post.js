@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import styled from "styled-components";
 import { Avatar } from "@material-ui/core";
 import InputOption from "./InputOption";
@@ -7,11 +7,11 @@ import ChatOutlineIcon from "@material-ui/icons/ChatOutlined";
 import ShareIcon from "@material-ui/icons/ShareOutlined";
 import SendIcon from "@material-ui/icons/SendOutlined";
 
-function Post({ name, description, message, photoUrl }) {
+const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   return (
-    <PostContainer>
+    <PostContainer ref={ref}>
       <PostHeader>
-        <PostAvatar />
+        <PostAvatar src={photoUrl}>{name[0]}</PostAvatar>
         <PostInfo>
           <h2>{name}</h2>
           <p>{description}</p>
@@ -28,7 +28,7 @@ function Post({ name, description, message, photoUrl }) {
       </PostButtons>
     </PostContainer>
   );
-}
+});
 
 export default Post;
 
@@ -68,4 +68,6 @@ const PostButtons = styled.div`
   justify-content: space-evenly;
 `;
 
-const PostAvatar = styled(Avatar)``;
+const PostAvatar = styled(Avatar)`
+  font-weight: 700;
+`;

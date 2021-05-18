@@ -7,16 +7,27 @@ import HomeIcon from "@material-ui/icons/Home";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import Logo from "../img/connection.png";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Logo from "../img/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../features/userSlice";
+import { auth } from "../firebase";
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const logoutofApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  };
+
   return (
     <HeaderContainer>
       <HeaderLeft>
         <img src={Logo} />
         <HeaderSearch>
           <SearchIcon />
-          <input type="text" />
+          <input type="text" placeholder="Search" />
         </HeaderSearch>
       </HeaderLeft>
 
@@ -26,8 +37,9 @@ function Header() {
         <HeaderOption Icon={ChatIcon} title="Chat" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
         <HeaderOption
-          avatar="https://pbs.twimg.com/profile_images/1254895625801535490/W680hT0d_400x400.jpg"
-          title="me"
+          Icon={ExitToAppIcon}
+          title="Logout"
+          onClick={logoutofApp}
         />
       </HeaderRight>
     </HeaderContainer>
@@ -53,7 +65,7 @@ const HeaderLeft = styled.div`
   display: flex;
   > img {
     object-fit: contain;
-    height: 40px;
+    height: 41px;
     margin-right: 10px;
   }
 `;
