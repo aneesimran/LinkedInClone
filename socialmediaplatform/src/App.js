@@ -9,6 +9,7 @@ import { login, logout, selectUser } from "./features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from "./firebase";
+import Widgets from "./components/Widgets";
 
 function App() {
   const user = useSelector(selectUser);
@@ -46,8 +47,7 @@ function App() {
                 <Route path="/" exact>
                   <Sidebar />
                   <Feed />
-
-                  {/* Widgets */}
+                  <Widgets />
                 </Route>
               </Switch>
             </AppBody>
