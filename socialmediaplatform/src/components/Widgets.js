@@ -90,6 +90,7 @@ const WidgetArticleRight = styled.div`
     font-size: 14px;
   }
   > p {
+    padding-top: 5px;
     font-size: 12px;
     color: gray;
   }
